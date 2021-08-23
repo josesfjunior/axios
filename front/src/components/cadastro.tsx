@@ -1,10 +1,24 @@
 import { useState } from "react";
-
+import axios from 'axios'
 export default function Cadastro() {
+
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  async function Criar(){
+    console.log("Oi")
+    
+    const requisicao = await axios.post("http://localhost:1002/User", {
+      nome: nome,
+      lastName: sobrenome,
+      email: email,
+      senha: senha
+    } )
+    console.log(await typeof requisicao)
+    console.log(await requisicao)
+  }
 
   return (
     <>
@@ -46,7 +60,7 @@ export default function Cadastro() {
             }}
           ></input>
         </div>
-        <button>Cadastrar</button>
+        <button onClick = { Criar }>Cadastrar</button>
       </div>
     </>
   );

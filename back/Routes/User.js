@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const User = require("../Models/UserModel");
 
 router.get("/", async (req, res) => {
@@ -8,13 +7,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const salt = bcrypt.genSaltSync(10);
-  const senha = await bcrypt.hashSync(req.body.password, salt);
+
   const user = {
-    nome: req.body.name,
+    nome: req.body.nome,
     lastName: req.body.lastName,
     email: req.body.email,
-    senha: senha,
+    senha: req.body.senha,
   };
   try {
     await User.create(user);

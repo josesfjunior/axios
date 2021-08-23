@@ -1,8 +1,24 @@
 import { useState } from "react";
-
+import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  async function Entrar() {
+    const resposta = await axios.post("http://localhost:1002/Login", {
+      email: email,
+    });
+    const data = await resposta.data;
+    if( senha != data.senha ) {
+      alert("senha errada")
+    }
+    const fullName = `${data.nome}${data.lastName}`
+    sessionStorage.setItem('nome', fullName)
+    /**
+     * -> inical /home 
+     * -> autenticação -> /home 
+     */
+  }
 
   return (
     <>
@@ -26,7 +42,7 @@ export default function Login() {
             }}
           ></input>
         </div>
-        <button>Login</button>
+        <button onClick={Entrar}>Login</button>
       </div>
     </>
   );
