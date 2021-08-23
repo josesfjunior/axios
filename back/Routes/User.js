@@ -13,8 +13,6 @@ router.post("/", async (req, res) => {
   const user = {
     nome: req.body.name,
     lastName: req.body.lastName,
-    cpf: req.body.cpf,
-    rg: req.body.rg,
     email: req.body.email,
     senha: senha,
   };
