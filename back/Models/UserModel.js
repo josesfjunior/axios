@@ -27,15 +27,7 @@ const User = database.define('User',{
     senha:{
         type: Sequelize.STRING,
         allowNull: false,
-    },
-    rg: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    cpf:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
+    }
 })
 
 module.exports = User
