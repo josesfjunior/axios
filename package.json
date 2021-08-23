@@ -1,0 +1,11 @@
+{
+  "name": "aula-pedro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "config": "cd ./back && npm i && cd./front && npm i"
+  },
+  "author": "Juninho",
+  "license": "ISC"
+}

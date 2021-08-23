@@ -1,0 +1,32 @@
+version: "3"
+services:
+  front-end:
+    build: ./front
+    ports:
+      - 1001:3000
+    volumes:
+      - ./front:/home/front
+
+  back-end:
+    build: ./back
+    ports:
+      - 1002:3001
+    volumes:
+      - ./back:/home/back
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=Teste
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "1003:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 1004:8080
